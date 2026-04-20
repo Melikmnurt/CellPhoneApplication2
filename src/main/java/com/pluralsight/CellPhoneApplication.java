@@ -8,10 +8,11 @@ public class CellPhoneApplication {
         //Create Scanner
         Scanner input = new Scanner(System.in);
 
-        //Create a cellphone object
-        CellPhone phone = new CellPhone();
+        //Create two cell phone objects
+        CellPhone cellPhone1 = new CellPhone();
+        CellPhone cellPhone2 = new CellPhone();
 
-        //Ask user for input
+        //Input for first phone
         System.out.print("What is the serial number? ");
         int serial = input.nextInt();
         input.nextLine();
@@ -28,12 +29,52 @@ public class CellPhoneApplication {
         System.out.print("Who is the owner of the phone? ");
         String owner = input.nextLine();
 
+        //Store values using setters
+        cellPhone1.setSerialNumber(serial);
+        cellPhone1.setModel(model);
+        cellPhone1.setCarrier(carrier);
+        cellPhone1.setPhoneNumber(phoneNumber);
+        cellPhone1.setOwner(owner);
+
+        //Input for second phone
+        System.out.println("\nEnter information for Phone 2: ");
+
+        System.out.print("What is the serial number? ");
+        int serial2 = input.nextInt();
+        input.nextLine();
+
+        System.out.print("What model is the phone? ");
+        String model2 = input.nextLine();
+
+        System.out.print("Who is the carrier? ");
+        String carrier2 = input.nextLine();
+
+        System.out.print("What is the phone number? ");
+        String phoneNumber2 = input.nextLine();
+
+        System.out.print("Who is the owner of the phone? ");
+        String owner2 = input.nextLine();
+
         //Use setters to store values in the object
-        phone.setSerialNumber(serial);
-        phone.setModel(model);
-        phone.setCarrier(carrier);
-        phone.setPhoneNumber(phoneNumber);
-        phone.setOwner(owner);
+        cellPhone2.setSerialNumber(serial2);
+        cellPhone2.setModel(model2);
+        cellPhone2.setCarrier(carrier2);
+        cellPhone2.setPhoneNumber(phoneNumber2);
+        cellPhone2.setOwner(owner2);
+
+        //Display both names
+        display(cellPhone1);
+        display(cellPhone2);
+
+        //Phones call each other
+        cellPhone1.dial(cellPhone2.getPhoneNumber()); //Phone 1 calls Phone 2
+        cellPhone2.dial(cellPhone1.getPhoneNumber()); //Phone 2 calls Phone 1
+
+        //Close scanner
+        input.close();
+    }
+    //Static method to display phone details
+    public static void display(CellPhone phone){
 
         //Print using getters
         System.out.println("\nCell Phone Information: ");
@@ -42,8 +83,5 @@ public class CellPhoneApplication {
         System.out.println("Carrier: " + phone.getCarrier());
         System.out.println("Phone Number: " + phone.getPhoneNumber());
         System.out.println("Owner: " + phone.getOwner());
-
-        //Close scanner
-        input.close();
     }
 }

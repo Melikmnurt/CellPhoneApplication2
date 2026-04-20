@@ -47,7 +47,12 @@ public class CellPhone {
     public void setPhoneNumber(String phoneNumber){
         this.phoneNumber = phoneNumber;
     }
-    public void setOwner(String owner){
+    public void setOwner(String owner) {
         this.owner = owner;
+    }
+    //Method to simulate dialing a phone number
+    public void dial (String phoneNumber){
+        //Uses this object's owner and the number passed in
+        System.out.println(owner + " 's phone is calling " + phoneNumber);
     }
 }
